@@ -63,3 +63,9 @@ h1 {
   background-color: #e984a2;
   color: rgb(33, 32, 35);
 }
+
+/*Class used for coloring winning configuration of cells*/
+.wonClass {
+  background-color: crimson !important;
+  color: white;
+}

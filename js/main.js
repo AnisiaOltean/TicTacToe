@@ -40,6 +40,7 @@ function updateCell(cell, index) {
 
 function checkWinner() {
   let gameOver = false;
+  var i1, i2, i3; //hold indices of board cells in case of win situation
   for (let i = 0; i < winConditions.length; i++) {
     const currArr = winConditions[i];
     const posA = selectedCells[currArr[0]];
@@ -50,11 +51,21 @@ function checkWinner() {
 
     if (posA == posB && posB == posC) {
       gameOver = true;
+      //indices of the 3 cells on board
+      i1 = currArr[0];
+      i2 = currArr[1];
+      i3 = currArr[2];
+
       break;
     }
   }
   if (gameOver) {
     infoText.textContent = `Player ${currentPlayer} won!`;
+    //add background color to winning cells
+    addClass(i1);
+    addClass(i2);
+    addClass(i3);
+
     running = false;
   } else if (!selectedCells.includes("")) {
     infoText.textContent = `It's a tie!`;
@@ -62,6 +73,10 @@ function checkWinner() {
   } else {
     updatePlayer();
   }
+}
+
+function addClass(index) {
+  cells[index].classList.add("wonClass");
 }
 
 function updatePlayer() {
@@ -72,6 +87,7 @@ function updatePlayer() {
 function resetBoard() {
   cells.forEach((cell) => {
     cell.textContent = "";
+    cell.classList.remove("wonClass");
   });
   selectedCells = ["", "", "", "", "", "", "", "", ""];
   currentPlayer = "X";
@@ -82,3 +98,4 @@ function resetBoard() {
 //start game
 startGame();
 //arrow functions are not hoisted!!
+//var declarations are globally scoped or function scoped while let and const are block scoped!!
