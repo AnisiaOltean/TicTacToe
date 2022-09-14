@@ -3,37 +3,55 @@
   background-color: #eae9e7;
   font-family: "Acme", sans-serif;
   font-size: 30px;
+  margin: 0;
 }
 
 h1 {
   text-align: center;
   font-size: 60px;
   color: crimson;
+  margin-bottom: 20px;
+}
+
+/*cell*/
+.cellContainer > div.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #e3e9e9;
+  font-size: 60px;
+  transition: all 0.3s ease-in-out;
+}
+
+#cell0 {
+  border-top-left-radius: 10px;
+}
+
+#cell2 {
+  border-top-right-radius: 10px;
+}
+
+#cell6 {
+  border-bottom-left-radius: 10px;
+}
+
+#cell8 {
+  border-bottom-right-radius: 10px;
 }
 
 .cellContainer {
   background-color: #c4d0c6;
   display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  /*better to use fr instead of auto!*/
   grid-gap: 10px;
   width: 40%;
-  /*width: 600px;
-  height: 600px;*/
+  aspect-ratio: 1/1;
   margin: auto;
+  border: 10px solid #8fa5b2;
   border-radius: 20px;
-  outline: 10px solid #8fa5b2;
-}
-
-/*cell*/
-.cellContainer > div {
-  border-radius: 10px;
-  padding: auto;
-  background-color: #e3e9e9;
-  font-size: 50px;
-  text-align: center;
-  padding: 53px 0px;
-  transition: all 0.3s ease-in-out;
 }
 
 .cell:hover {
@@ -41,17 +59,25 @@ h1 {
   opacity: 0.8;
 }
 
+.footer {
+  display: flex;
+  margin: auto;
+  width: 40%;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
 #resetBtn {
   font-size: 25px;
   display: inline-block;
-  margin-left: 34%;
-  transform: translate(-34%, 0);
+  /*transform: translate(-34%, 0);*/
   margin-top: 25px;
   padding: 10px;
   box-shadow: 2px 3px grey;
   border-radius: 3px;
   background-color: crimson;
   color: white;
+  margin-right: 10px;
 }
 
 #resetBtn:hover {
@@ -65,4 +91,32 @@ h1 {
 .wonClass {
   background-color: crimson !important;
   color: white;
+}
+
+@media screen and (min-width: 441px) and (max-width: 880px) {
+  .cellContainer {
+    width: calc(100% - 60px);
+  }
+
+  .footer {
+    display: grid;
+    width: calc(100% - 60px);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .cellContainer {
+    width: calc(100% - 60px);
+  }
+
+  .footer {
+    display: grid;
+    width: calc(100% - 60px);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+  }
 }

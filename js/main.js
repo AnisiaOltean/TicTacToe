@@ -33,7 +33,7 @@ function initializeGame() {
 function updateCell(cell, index) {
   if (cells[index].textContent != "" || !running) return;
 
-  cell.innerText = currentPlayer;
+  cell.textContent = currentPlayer;
   selectedCells[index] = currentPlayer;
   checkWinner();
 }
